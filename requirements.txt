@@ -1,0 +1,19 @@
+# Core LangChain
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.20
+
+# OpenAI
+openai>=1.10.0
+
+# HTTP Requests
+requests>=2.31.0
+
+# Interface
+gradio>=4.16.0
+
+# Utilities
+python-dotenv>=1.0.0
+
+# Optional: SerpAPI (para busca web)
+google-search-results>=2.4.2  # SDK oficial da SerpAPI (opcional)
