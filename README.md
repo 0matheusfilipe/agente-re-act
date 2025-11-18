@@ -1,14 +1,3 @@
----
-title: ReAct Assistant
-emoji: 🤖
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-sdk_version: 4.16.0
-app_file: react_assistant.py
-pinned: false
----
-
 # 🤖 ReAct Assistant
 
 Agente de IA que implementa o paradigma **ReAct (Reasoning + Acting)** usando LangChain.
@@ -669,4 +658,5 @@ python react_assistant.py
 # 3. Teste queries que usam WebSearch
 "Quais as últimas notícias sobre IA?"
 "Quem ganhou a Copa do Mundo de 2022?"
+
 ```
