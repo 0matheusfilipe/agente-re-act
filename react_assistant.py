@@ -1,7 +1,6 @@
 """
 ReAct Assistant - Agente de IA com Reasoning + Acting
 Demonstra: LangChain Agents, Tools customizadas, LLMOps, Deploy-ready
-Versão 2.0 - Agora com Web Search (SerpAPI)
 """
 
 import os
@@ -10,11 +9,32 @@ import logging
 from datetime import datetime
 from typing import Optional, Dict, Any, List
 import requests
-from langchain.agents import AgentExecutor, create_react_agent
+
+# ============================================================================
+# IMPORTS CORRIGIDOS DO LANGCHAIN
+# ============================================================================
+try:
+    # Tenta importar da nova estrutura (LangChain 0.1+)
+    from langchain.agents import create_react_agent, AgentExecutor
+except ImportError:
+    try:
+        # Fallback para estrutura alternativa
+        from langchain.agents import AgentExecutor
+        from langchain.agents.react.agent import create_react_agent
+    except ImportError:
+        # Última tentativa - imports separados
+        from langchain_core.agents import AgentExecutor
+        from langchain.agents import create_react_agent
+
 from langchain.tools import Tool
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from langchain_community.callbacks import get_openai_callback
+
+# Callback para tracking de tokens
+try:
+    from langchain_community.callbacks import get_openai_callback
+except ImportError:
+    from langchain.callbacks import get_openai_callback
 
 # ============================================================================
 # CONFIGURAÇÃO DE LOGGING (LLMOps)
@@ -750,4 +770,5 @@ if __name__ == "__main__":
     else:
         # Inicia interface Gradio
         demo = create_gradio_interface()
+
         demo.launch(share=True)
